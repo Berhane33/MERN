@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { isEmail } = require("validator");
+const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema(
   {
@@ -34,13 +35,13 @@ const userSchema = new mongoose.Schema(
       max: 1024,
     },
     followers: {
-      type: [String],
+      type: [String]
     },
     following: {
-      type: [String],
+      type: [String]
     },
     likes: {
-      type: [String],
+      type: [String]
     },
   },
   {
@@ -66,6 +67,6 @@ userSchema.statics.login = async function (email, password) {
   throw Error("Incorrect email");
 };
 
-const UserModel = mongoose.model("user", userSchema);
+const UserModel = mongoose.model("User", userSchema);
 
 module.exports = UserModel;
